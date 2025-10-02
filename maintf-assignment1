@@ -8,8 +8,15 @@ output "my_group_id" {
 }
 data "akamai_property" "my_property_id"{
     name="mehanuma.prlab.test"
+
 }
 
 output "my_property_id"{
     value=data.akamai_property.my_property_id.property_id 
+}
+data "akamai_appsec_configuration" "my_secfile"{
+    name="aaa"
+}
+output "my_secfile"{
+    value=data.akamai_appsec_configuration.my_secfile.host_names
 }
