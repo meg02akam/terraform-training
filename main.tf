@@ -3,13 +3,11 @@ data "akamai_group" "my_group_id" {
     contract_id = "ctr_1-1NC95D"
    
 }
-output "my_group_id" {
-    value = data.akamai_group.my_group_id.id
-}
+
 data "akamai_property" "my_property_id"{
     name="mehanuma.prlab.test"
 }
 
-output "my_property_id"{
-    value=data.akamai_property.my_property_id.property_id 
+data "akamai_appsec_configuration" "mehanuma_secfile" {
+    name="mehanuma-security"
 }
