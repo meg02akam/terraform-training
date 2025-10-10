@@ -27,3 +27,12 @@ resource "akamai_appsec_security_policy" "duplicated_policy" {
   security_policy_name           = "duplicated-policy"
   security_policy_prefix         = "meh2"
 }
+
+/* Activation of security file on staging network 
+resource "akamai_appsec_activations" "mehanuma_secfile_activation" {
+  notification_emails = ["mehanuma@akamai.com"]
+  network = "STAGING"
+  version = 1
+  config_id = akamai_appsec_configuration.mehanuma_secfile.config_id
+  note = local.notes
+}*/

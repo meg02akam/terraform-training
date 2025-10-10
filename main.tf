@@ -11,3 +11,9 @@ data "akamai_property" "my_property_id"{
 data "akamai_appsec_configuration" "mehanuma_secfile" {
     name="mehanuma-security"
 }
+
+locals {
+ticket_id = "TF-3001"
+group_id = data.akamai_group.my_group_id.id
+notes = "${local.ticket_id}-${local.group_id}"
+}

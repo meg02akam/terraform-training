@@ -49,7 +49,7 @@ resource "akamai_property" "my_property" {
   group_id      = data.akamai_group.my_group_id.id
   rule_format   = "v2025-07-07"
   rules= data.akamai_property_rules_builder.my_default_rule.json
-  version_notes = "Initial version"
+  version_notes = local.notes
   hostnames {
     cname_from             = "mehanumatf.prlab.lol"
     cname_to               = akamai_edge_hostname.my_ehn.edge_hostname
