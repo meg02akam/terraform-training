@@ -7,3 +7,6 @@ variable "ab_test"{
     type = string
     default = "A"
 }
+variable "apps" {
+  default = [ "www", "api", "blog", "shop", "cdn"]
+}

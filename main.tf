@@ -18,3 +18,10 @@ ticket_id = "TF-3001"
 group_id = data.akamai_group.my_group_id.id
 notes = "${local.ticket_id}-${local.group_id}"
 }
+
+locals {
+  app_hostnames = {for app in var.apps : "${app}" => "${app}.example.com"}
+}
+output "hostname" {
+  value = local.app_hostnames
+}
