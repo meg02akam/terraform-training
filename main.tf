@@ -13,14 +13,14 @@ data "akamai_appsec_configuration" "mehanuma_secfile" {
     name="mehanuma-security"
 }
 
-locals {
-ticket_id = "TF-3001"
-group_id = data.akamai_group.my_group_id.id
-notes = "${local.ticket_id}-${local.group_id}"
-}
+#locals {
+#ticket_id = "TF-3001"
+#group_id = data.akamai_group.my_group_id.id
+#notes = "${local.ticket_id}-${local.group_id}"
+#}
 
 locals {
-  app_hostnames = {for app in var.apps : "${app}" => "${app}.example.com"}
+  app_hostnames = {for app in var.apps : "${app}" => "${app}.prlab.lol"}
 }
 output "hostname" {
   value = local.app_hostnames

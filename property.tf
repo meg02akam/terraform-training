@@ -42,6 +42,10 @@ data "akamai_property_rules_builder" "my_default_rule" {
   }
 }
 
+output "debug_app_hostnames" {
+  value = local.app_hostnames
+}
+
 resource "akamai_property" "my_property" {
   name          = "mehanuma2-terraform"
   product_id    =  "prd_Fresca"
@@ -49,10 +53,12 @@ resource "akamai_property" "my_property" {
   group_id      = data.akamai_group.my_group_id.id
   rule_format   = "v2025-07-07"
   rules= data.akamai_property_rules_builder.my_default_rule.json
-  version_notes = local.notes
-  hostnames {
-    cname_from             = "mehanumatf.prlab.lol"
+  dynamic "hostnames" {
+    for_each = local.app_hostnames
+    content { 
+    cname_from             = hostnames.value
     cname_to               = akamai_edge_hostname.my_ehn.edge_hostname
     cert_provisioning_type = "DEFAULT"
+  }
   }
 }
