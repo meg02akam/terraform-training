@@ -2,10 +2,13 @@
 
 resource "akamai_appsec_configuration" "mehanuma_secfile" {
 name="mehanuma-security"
-group_id = data.akamai_group.my_group_id.id
+group_id = replace(data.akamai_group.my_group_id.id,"grp_","")
 contract_id = "1-1NC95D"
 description ="my-first-security-config"
 host_names = ["mehanuma.prlab.lol"]
+}
+output "group_id"{
+  value=replace(data.akamai_group.my_group_id.id,"grp_","")
 }
 
 //Create appsec policy resource within the above appsec config

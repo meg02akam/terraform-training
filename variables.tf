@@ -1,10 +1,9 @@
-variable "config_section" {
-  type = string
-  #default = "terraform-ps"
-}
-
-variable "edgerc_path" {
+variable "akamai_client_secret" {}
+variable "akamai_host" {}
+variable "akamai_access_token" {}
+variable "akamai_client_token" {}
+variable "akamai_account_key" {}
+variable "ab_test"{
     type = string
-   # default = "~/.edgerc"
-  
+    default = "A"
 }
